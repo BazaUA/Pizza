@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Pizza</title>
+
+    <!-- Bootsrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <!-- LESS основний файл -->
+    <link rel="stylesheet/less" type="text/css" href="assets/less/main.less" />
+    <!-- LESS JavaScript компілятор -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/less.js/2.5.3/less.min.js"></script>
+
+
+</head>
+<body>
+    <div class="discount-panel">
+        <div class="discount-before"></div>
+        <div class="discount-title">Цього тижня на все</div>
+        <div class="discount-text">20%</div>
+    </div>
+<div class="navbar navbar-fixed-top top-panel">
+    <div class="site-icon">
+        <div class="discount-before top-discount">
+        </div>
+        <a class="pizza-logo" href="/index.html">
+            <div id="pizza-title2" class="title-1">
+                Pizza
+            </div>
+            <div class="title-2">
+                KMA
+            </div>
+        </a>
+    </div>
+    <div class="header-top-row">
+        <div class="main-header-top-items">
+            <div class="main-header-top-item phone-number visible-xs-inline-block visible-sm-inline-block visible-lg-inline-block visible-md-inline-block">
+                (044) 222 5 222
+            </div>
+            <div class="main-header-top-item work-days visible-lg-inline-block visible-md-inline-block">
+                24 години/ 7 днів на тиждень
+            </div>
+            <div class="main-header-top-item delivery visible-lg-inline-block">
+                Безкоштовна доставка піци
+            </div>
+            <div type="button" class="main-header-top-item btn btn-warning sign-in-button">
+                Ввійти
+            </div>
+        </div>
+    </div>
+
+    <div class="header-down-row">
+        <span class=" pizza-page" style="color:white;">
+            <a href="index.html" style="color:white;" class="hidden-xs">Піца</a> &nbsp;
+        </span>
+
+    </div>
+
+</div>
+    
+<div class="main-container  container-fluid">
+    <div class="row">
+        <div class="left-panel">
+            <div class="page-title">
+                <h2>
+                    <span class="count-tile">Усі піци</span>
+                    <span class="badge orange pizza-count" id="numberOf">4</span>
+                </h2>
+            </div>
+            <div class="all-pizza-type-wrap">
+                <ul class="nav nav-pills all-pizza-type">
+                    <li role="presentation" class="pizza-filter-button active" id="filter-button-all">
+                        <a href="#">
+                            Усі
+                        </a>
+                    </li>
+                    <li role="presentation" class="pizza-filter-button" id="filter-button-meat">
+                        <a href="#">
+                            Мясні
+                        </a>
+                    </li>
+                    <li role="presentation" class="pizza-filter-button" id="filter-button-pineapples">
+                        <a href="#">
+                            З ананасами
+                        </a>
+                    </li>
+                    <li role="presentation" class="pizza-filter-button" id="filter-button-mushrooms">
+                        <a href="#">
+                            З грибами
+                        </a>
+                    </li>
+                    <li role="presentation" class="pizza-filter-button" id="filter-button-ocean">
+                        <a href="#">
+                            З морепродуктами
+                        </a>
+                    </li>
+                    <li role="presentation" class="pizza-filter-button" id="filter-button-tomato">
+                        <a href="#">
+                            Вега
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="row pizza-list" id="pizza_list">
+              
+        </div>
+    </div>
+    </div>
+    </div>
+        <div class="right-panel">
+    <div class="r1">
+                <span class="order-list-title">
+                    Замовлення
+                    <span class="badge orange orders-count-span">0</span>
+                </span>
+        
+                <span class="clear-order-wrap clear-order">
+                    Очистити замовлення
+                </span>
+        
+    </div>
+    <div class="all-orders r2" id="cart">
+        <div>
+    gegrgrg
+    <div>Ціна: erger грн.</div>
+    <div>
+        <button class="btn btn-danger minus">-</button>
+        <span class="label label-default">erg></span>
+        <button class="btn btn-success plus">+</button>
+    </div>
+</div>
+        <div class="no-order-text">Пусто в холодильнику?<br>Замовте піцу! </div>
+            
+            </div>
+
+    <div class="order-state r3">
+                <span class="sum-title" style="display: none;">
+                    Сума замовлення
+                </span>
+                <span class="sum-number" style="display: none;">2432 грн</span>
+        <div class="do-order-button">
+            <button type="button" class="btn btn-warning btn-lg btn-block button-order" disabled="">
+                Замовити
+            </button>
+            
+        </div>
+
+    </div>
+</div>
+    <footer class="footer">
+    <p>Pizza.22 - практичний проект в межах курсу JavaScript в Києво-Могилянській Академії</p>
+    <p>
+        Доставка піци не здійснюється
+    </p>
+</footer>
+<!-- jQuery JavaScript -->
+<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.min.js"> </script>
+
+<!--Bootsrap JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+<!--Own JavaScript -->
+<script type="text/javascript"  src="assets/js/main.js"> </script>
+</body>
+</html>
