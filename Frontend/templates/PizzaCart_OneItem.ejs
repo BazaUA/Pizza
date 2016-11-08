@@ -1,9 +1,30 @@
-<div>
-    <%= pizza.title %> (<%= size %>)
-    <div>Ціна: <%= pizza[size].price %> грн.</div>
-    <div>
-        <button class="btn btn-danger minus">-</button>
-        <span class="label label-default"><%= quantity %></span>
-        <button class="btn btn-success plus">+</button>
+<div class="order-one ng-scope">
+    <img class="img-aside pizza-icon" alt="Піца" src="<%= pizza.icon %>">
+    <p class="bold mb10 ng-scope">
+        <span class="order-title"><%= pizza.title %></span>
+    </p>
+    <div class="order-text">
+        <img class="diagonal-image" src="assets/images/size-icon.svg">
+        <span class="diagonal"><%= pizza[size].size %></span>
+        <img class="gram-image" src="assets/images/weight.svg">
+        <span class="gram"><%= pizza[size].weight %></span>
+    </div>
+    <div class="price-box">
+        <span class="price"><%= pizza[size].price %> грн</span>
+        <a class="minus btn btn-xs btn-danger btn-circle" href="#">
+            <i class="glyphicon glyphicon-minus icon-white">
+            </i>
+        </a>
+            <span class="label order-pizza-count" style="color:black;"><%= quantity %></span>
+        <a class="plus btn btn-xs btn-success btn-circle" href="#">
+            <i class="glyphicon glyphicon-plus icon-white">
+
+            </i>
+        </a>
+        <a class="count-clear btn btn-xs btn-default btn-circle" href="#">
+            <i class="glyphicon glyphicon-remove icon-white">
+
+            </i>
+        </a>
     </div>
 </div>
