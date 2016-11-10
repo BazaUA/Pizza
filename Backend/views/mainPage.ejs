@@ -1,0 +1,90 @@
+<% include common/header.ejs %>
+
+<div class="discount-panel">
+        <div class="discount-before"></div>
+        <div class="discount-title">Цього тижня на все</div>
+        <div class="discount-text">20%</div>
+    </div>
+<div class="main-container  container-fluid">
+    <div class="row">
+        <div class="left-panel">
+            <div class="page-title">
+                <h2>
+                    <span class="count-tile">Усі піци</span>
+                    <span class="badge orange pizza-count">8</span>
+                </h2>
+            </div>
+            <div class="all-pizza-type-wrap">
+                <ul class="nav nav-pills all-pizza-type">
+                    <li role="presentation" class="pizza-filter-button" id="all">
+                        <a href="#" id="all">
+                            Усі
+                        </a>
+                    </li>
+                    <li role="presentation" class="pizza-filter-button" id="meat">
+                        <a href="#" id="meat">
+                            Мясні
+                        </a>
+                    </li>
+                    <li role="presentation" class="pizza-filter-button" id="pineapples">
+                        <a href="#" id="pineapple">
+                            З ананасами
+                        </a>
+                    </li>
+                    <li role="presentation" class="pizza-filter-button" id="mushrooms">
+                        <a href="#" id="mushroom">
+                            З грибами
+                        </a>
+                    </li>
+                    <li role="presentation" class="pizza-filter-button" id="ocean">
+                        <a href="#" id="ocean">
+                            З морепродуктами
+                        </a>
+                    </li>
+                    <li role="presentation" class="pizza-filter-button" id="tomato">
+                        <a href="#" id="tomato">
+                            Вега
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="row pizza-list" id="pizza_list">
+              
+            </div>
+    </div>
+    </div>
+    </div>
+<div class="right-panel">
+    <div class="r1">
+                <span class="order-list-title">
+                    Замовлення
+                    <span class="badge orange orders-count-span">0</span>
+                </span>
+        
+                <span class="clear-order-wrap clear-order">
+                    Очистити замовлення
+                </span>
+        
+    </div>
+    <div class="all-orders r2" id="cart">
+        <div class="tmp">
+        <div class="no-order-text">Пусто в холодильнику?<br>Замовте піцу! </div>
+            </div>
+        </div>
+    <div class="order-state r3">
+                <span class="sum-title" >
+                    Сума замовлення
+                </span>
+                <span class="sum-number" >0 грн</span>
+        <div class="do-order-button">
+           <button type="button" class="btn btn-warning btn-lg btn-block button-order" id="bt">
+                Замовити
+                </button>
+            
+        </div>
+
+    </div>
+</div>
+
+<% include common/footer.ejs %>

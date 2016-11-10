@@ -3,7 +3,7 @@
  */
 var Templates = require('../Templates');
 var localStorage = require('../LocalStorage');
-
+var API = require('../API');
 var SAVED_PIZZA_KEY = "savedPizza";
 //Перелік розмірів піци
 var PizzaSize = {
@@ -124,6 +124,11 @@ function updateCart() {
     
     Cart.forEach(showOnePizzaInCart);
 
+    $(".button-order").click(function(){    
+        API.createOrder(Cart,function(){
+            console.log("Data sent.");
+        });
+    });
 }
 
 exports.removeFromCart = removeFromCart;
