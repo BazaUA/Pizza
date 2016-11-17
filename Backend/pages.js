@@ -9,6 +9,6 @@ exports.mainPage = function(req, res) {
 
 exports.orderPage = function(req, res) {
     res.render('orderPage', {
-        pageTitle: 'Creating Order'
+        pageTitle: 'Оформлення замовлення'
     });
 };
