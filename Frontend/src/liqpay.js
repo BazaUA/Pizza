@@ -1,4 +1,4 @@
-function	base64(str)	 {
+/*function	base64(str)	 {
     return	new	Buffer(str).toString('base64');
 }
 
@@ -11,4 +11,4 @@ function	sha1(string)	{
 }
 
 exports.base64 = base64;
-exports.sha1 = sha1;
+exports.sha1 = sha1;*/

@@ -145,46 +145,29 @@ function updateCart() {
             bool=false;
         }else{
              $(".address-help-block").css("display","none");
-        }
+        }console.log(form.address.value);
         if(gBool){
             API.createOrder(Cart,function(err,data){
-            if(err){
-                console.log("err")
-            }else{
-                //console.log(data);
-            }
-        });
-            var LIQPAY_PUBLIC_KEY = 'i56166407707';
-        var LIQPAY_PRIVATE_KEY = 'Wsih6qojE5ZJftNkEiuAd34mgYiAlXOXh8LGoETB';
-        var order	=	{
-            version:	3,
-            public_key:	LIQPAY_PUBLIC_KEY,
-            action:	"pay",
-            amount:	568.00,
-            currency:	"UAH",
-            description:	"Опис транзакції",
-            order_id:	Math.random(),
-            //!!!Важливо щоб було 1,	бо інакше візьме гроші!!!
-            sandbox:	1
-        };
-        
-        
-        var data	=	Liqpay.base64(JSON.stringify(order));
-        var signature	=	Liqpay.sha1(LIQPAY_PRIVATE_KEY	+	data	+	LIQPAY_PRIVATE_KEY);
-        
-        LiqPayCheckout.init({
-            data:	data,
-            signature:	signature,
-            embedTo:	"#liqpay",
-            mode:	"popup"	//	embed	||	popup
-            }).on("liqpay.callback",	function(data){
-                console.log(data.status);
-                console.log(data);
-            }).on("liqpay.ready",	function(data){
-                //	ready
-            }).on("liqpay.close",	function(data){
-                //	close
+                if(err){
+                    console.log("err")
+                }else{
+                    console.log(data);
+                    LiqPayCheckout.init({
+                        data:	data.data,
+                        signature:	data.signature,
+                        embedTo:	"#liqpay",
+                        mode:	"popup"	//	embed	||	popup
+                    }).on("liqpay.callback",	function(data){
+                        console.log(data.status);
+                        console.log(data);
+                    }).on("liqpay.ready",	function(data){
+                        //	ready
+                    }).on("liqpay.close",	function(data){
+                        //	close
+                    });
+                }
             });
+            
         }
     });
 
@@ -235,7 +218,38 @@ function	initialize()	{
         });	
     });
     
-  
+    $("#inputAdress").keypress(function(){
+         var coordinates;
+        if(markerHome){
+            markerHome.setMap(null);
+            markerHome = null;
+        }
+        var address = $("#inputAdress").val();
+        geocodeAddress(address, function(err, inputCoordinates){
+           if(!err){
+               coordinates	=	inputCoordinates;
+               console.log(coordinates);
+           } 
+        });
+        markerHome	=	new	google.maps.Marker({
+            position:	coordinates,
+            animation: google.maps.Animation.DROP,
+            map:	map,
+            icon:	"assets/images/home-icon.png"
+        });
+        geocodeLatLng(coordinates,	function(err,	adress){
+            if(!err)	{
+                $("#ad").text(adress);
+              
+            }
+        })
+        calculateRoute(point,	 me.latLng,	function(err, time){
+           if(!err){
+               $("#tm").text(time.duration.text);
+             
+           } 
+        });	
+    });
    
     
 }
@@ -323,7 +337,7 @@ function haveNumber(input){
     }
 }
 function number(input){
-   console.log("d");
+   
     var bool=true;
     var name=[];
     name=input;
@@ -337,7 +351,7 @@ function number(input){
             gBool=false;
         }
     }
-   console.log(bool);
+  
     if(bool){
          $(".phone-help-block").css("display","none");
        

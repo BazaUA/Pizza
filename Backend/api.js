@@ -2,12 +2,14 @@
  * Created by chaika on 09.02.16.
  */
 var Pizza_List = require('./data/Pizza_List');
-
+var Liqpay= require('./liqpay.js');
 exports.getPizzaList = function(req, res) {
     res.send(Pizza_List);
 };
 
 exports.createOrder = function(req, res) {
+    var dataInput	=	req.body;
+    console.log(dataInput);
     var LIQPAY_PUBLIC_KEY = 'i56166407707';
         var LIQPAY_PRIVATE_KEY = 'Wsih6qojE5ZJftNkEiuAd34mgYiAlXOXh8LGoETB';
         var order	=	{
@@ -25,10 +27,10 @@ exports.createOrder = function(req, res) {
         
         var data	=	Liqpay.base64(JSON.stringify(order));
         var signature	=	Liqpay.sha1(LIQPAY_PRIVATE_KEY	+	data	+	LIQPAY_PRIVATE_KEY);
-
+    
     res.send({
+        success: true,
         data: data,
         signature: signature
-        
     });
 };
