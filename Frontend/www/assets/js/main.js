@@ -497,38 +497,47 @@ function	initialize()	{
     });
     
     $("#inputAdress").keypress(function(){
-         var coordinates;
-        if(markerHome){
-            markerHome.setMap(null);
-            markerHome = null;
-        }
-        var address = $("#inputAdress").val();
-        geocodeAddress(address, function(err, inputCoordinates){
-           if(!err){
-               coordinates	=	inputCoordinates;
-               console.log(coordinates);
-           } 
-        });
-        markerHome	=	new	google.maps.Marker({
-            position:	coordinates,
-            animation: google.maps.Animation.DROP,
-            map:	map,
-            icon:	"assets/images/home-icon.png"
-        });
-        geocodeLatLng(coordinates,	function(err,	adress){
-            if(!err)	{
-                $("#ad").text(adress);
-              
+        if( $("#inputAdress").val().length>4){
+            var coordinates;
+            if(markerHome){
+                markerHome.setMap(null);
+                markerHome = null;
             }
-        })
-        calculateRoute(point,	 me.latLng,	function(err, time){
-           if(!err){
-               $("#tm").text(time.duration.text);
-             
-           } 
-        });	
+            var address = $("#inputAdress").val();
+            geocodeAddress(address, function(err, inputCoordinates){
+                if(!err){
+                    coordinates	=	inputCoordinates;
+                    console.log(coordinates);
+                    markerHome	=	new	google.maps.Marker({
+                        position:	coordinates,
+                        animation: google.maps.Animation.DROP,
+                        map:	map,
+                        icon:	"assets/images/home-icon.png"
+                    });
+                    geocodeLatLng(coordinates,	function(err,	adress){
+                        if(!err)	{
+                            console.log(address);
+                            $("#ad").text(adress);
+                        }
+                    });
+                    calculateRoute(point,	 coordinates,	function(err, time){
+                        if(!err){
+                            $("#tm").text(time.duration.text);
+
+                        } 
+                    });
+                } 
+            });
+            
+            /*calculateRoute(point,	 coordinates,	function(err, time){
+               if(!err){
+                   $("#tm").text(time.duration.text);
+
+               } 
+            });	*/
+        }
     });
-   
+    
     
 }
 
@@ -545,7 +554,7 @@ function	geocodeLatLng(latlng,	 callback){
         });
     }
     
-    function	geocodeAddress(adress,	 callback)	{
+    function	geocodeAddress(address,	 callback)	{
         var geocoder	=	new	google.maps.Geocoder();
         geocoder.geocode({'address':	address},	function(results,	status)	{
             if	(status	===	google.maps.GeocoderStatus.OK&&	results[0])	{
