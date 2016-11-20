@@ -289,6 +289,7 @@ var SAVED_PIZZA_KEY = "savedPizza";
 var map;
 var directionsDisplay;
 var gBool;
+var amount;
 //Перелік розмірів піци
 var PizzaSize = {
     Big: "big_size",
@@ -407,11 +408,6 @@ function updateCart() {
     $(".orders-count-span").text(Cart.length);
     
     Cart.forEach(showOnePizzaInCart);
-     
-    $(".button-order").click(function(){ 
-        
-      });
-    
 
     $(".next-step-button").click(function(){
         gBool=true;
@@ -423,21 +419,29 @@ function updateCart() {
             bool=false;
         }else{
              $(".address-help-block").css("display","none");
-        }console.log(form.address.value);
+        }
+        var name = form.name.value;
+        var phone = form.phone.value;
+        var address =form.address.value; 
+        var data	=	{
+            Cart: Cart,
+            name: name,
+            phone:phone, 
+            address: address
+        };
+        
         if(gBool){
-            API.createOrder(Cart,function(err,data){
+            API.createOrder(data,function(err,data){
                 if(err){
                     console.log("err")
                 }else{
-                    console.log(data);
                     LiqPayCheckout.init({
                         data:	data.data,
                         signature:	data.signature,
                         embedTo:	"#liqpay",
                         mode:	"popup"	//	embed	||	popup
                     }).on("liqpay.callback",	function(data){
-                        console.log(data.status);
-                        console.log(data);
+                        alert("Cтатус оплати "+data.status);
                     }).on("liqpay.ready",	function(data){
                         //	ready
                     }).on("liqpay.close",	function(data){
@@ -528,13 +532,6 @@ function	initialize()	{
                     });
                 } 
             });
-            
-            /*calculateRoute(point,	 coordinates,	function(err, time){
-               if(!err){
-                   $("#tm").text(time.duration.text);
-
-               } 
-            });	*/
         }
     });
     
